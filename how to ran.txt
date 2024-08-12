@@ -1,0 +1,19 @@
+How to Run the File Manager
+
+List Files in a Directory:
+python main.py list --path /path
+
+Copy a File:
+python main.py copy --source /path --destination /path
+
+Move a File:
+python main.py move --source /path --destination /path
+
+Rename a File:
+python main.py rename --source /path --new_name /path
+
+Delete a File or Directory:
+python main.py delete --path /path
+
+Print the Directory Tree:
+python main.py tree --path /path

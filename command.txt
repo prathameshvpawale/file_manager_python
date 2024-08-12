@@ -1,0 +1,5 @@
+virtualenv env
+
+env/Scripts/activate 
+
+pip3 freeze > requirements.txt
