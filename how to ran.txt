@@ -17,3 +17,15 @@ python main.py delete --path /path
 
 Print the Directory Tree:
 python main.py tree --path /path
+
+How to Use the search_files Functionality
+
+Search for Files by Name:
+python main.py search --path /path/to/directory --search_term filename
+python main.py search --path /documents --search_term report
+
+Search for Files by Extension:
+python main.py search --path /path/to/directory --search_term .txt --search_type extention
+python main.py search --path /documents --search_term .pdf --search_type extension
+
+

@@ -10,6 +10,7 @@ A simple and customizable command-line file manager built with Python. This tool
 - **Alter Filenames:** Rename files or directories.
 - **Remove Files/Directories:** Delete files or directories.
 - **Print Directory Tree:** Visualize the directory structure in a tree format.
+- **Search for Files** Visualize the directory file present.
 
 ## Installation
 

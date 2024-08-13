@@ -59,14 +59,28 @@ def print_file_tree(path='.', indent=''):
     except FileNotFoundError:
         print(f"The directory '{path}' does not exist.")
 
+def search_files(path='.', search_term='', search_type='name'):
+    """Search for files by name or extension."""
+    try:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if search_type == 'name' and search_term.lower() in file.lower():
+                    print(os.path.join(root, file))
+                elif search_type == 'extension' and file.lower().endswith(search_term.lower()):
+                    print(os.path.join(root, file))
+    except FileNotFoundError:
+        print(f"The directory '{path}' does not exist.")
+
 def main():
     parser = argparse.ArgumentParser(description='Customized File Manager')
     
-    parser.add_argument('command', choices=['explore', 'duplicate', 'relocate', 'alter', 'remove', 'tree'], help='Command to execute')
+    parser.add_argument('command', choices=['explore', 'duplicate', 'relocate', 'alter', 'remove', 'tree', 'search'], help='Command to execute')
     parser.add_argument('--path', default='.', help='Path to operate on')
     parser.add_argument('--source', help='Source file or directory')
     parser.add_argument('--destination', help='Destination file or directory')
     parser.add_argument('--new_name', help='New name for the alter operation')
+    parser.add_argument('--search_term', help='Term to search for (name or extension)')
+    parser.add_argument('--search_type', choices=['name', 'extension'], default='name', help='Search by file name or extension')
     
     args = parser.parse_args()
     
@@ -82,6 +96,8 @@ def main():
         remove_file(args.path)
     elif args.command == 'tree':
         print_file_tree(args.path)
+    elif args.command == 'search' and args.search_term:
+        search_files(args.path, args.search_term, args.search_type)
     else:
         print("Invalid command or missing arguments.")
         parser.print_help()
